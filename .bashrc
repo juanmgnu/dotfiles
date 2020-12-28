@@ -46,7 +46,7 @@ alias ytmp3="youtube-dl --extract-audio --no-playlist --audio-format mp3 -o '~/D
 # Rank mirrors:
 alias rank="sudo reflector --verbose --latest 50 --sort rate --save /etc/pacman.d/mirrorlist"
 
-# Reload grub conf:
+# Reload grub config:
 alias regrub="grub-mkconfig -o /boot/grub/grub.cfg"
 
 
