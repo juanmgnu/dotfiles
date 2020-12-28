@@ -1,0 +1,167 @@
+# ~~~~~~~~~~~~~
+# ~~ General ~~
+# ~~~~~~~~~~~~~
+
+# Any items in the `env` entry below will be added as environment variables. 
+# Some entries may override variables set by alacritty itself.
+# Necesario para que pueda llamar a scripts propios desde sxhkd.
+env:
+  # This value is used to set the `$TERM` environment variable for
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  TERM: alacritty
+
+window:
+  # Window dimension. Specified in number of columns/lines, not pixels.
+  # If both are `0`, this setting is ignored:
+  dimensions:
+    columns:  0
+    lines:    0
+
+  # Window position. Specified in number of pixels.
+  # If the position is not set, the window manager will handle the placement:
+  position:
+    x: 0
+    y: 0
+
+  # Window padding (blank space added around the window in pixels):
+  padding:
+    x: 0
+    y: 0
+
+  # Spread additional padding evenly around the terminal content:
+  dynamic_padding: true
+
+  # Window decorations:
+  decorations: none # full: borders and title bar / none: nothing.
+
+  # Startup mode:
+  startup_mode: Maximized # Windowed / Maximized / Fullscreen.
+
+  # GTK theme variant (Linux/BSD only). This override the variant of the GTK
+  # theme. Commonly supported values are `dark` and `light`:
+  gtk_theme_variant: None  # None: use the default theme variant.
+
+  # Window title:
+  title: Alacritty
+
+  # Window class (Linux/BSD only):
+  #  class:
+  #    instance: Alacritty # Application instance name.
+  #    general: Alacritty  # General application class.
+
+# Window opacity as a floating point number from `0.0` to `1.0`:
+background_opacity: 1.0 # 0.0 is completely transparent.
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer:
+  history: 5000 # 0 to disable scrolling.
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 5
+
+cursor:
+  style: Block  # Values: Block / Underline / Beam.
+
+  # If true, the cursor will be rendered as a hollow box when 
+  # the window is not focused:
+  unfocused_hollow: true 
+
+
+# ~~~~~~~~~~~~~
+# ~~ Colores ~~
+# ~~~~~~~~~~~~~
+
+# Tema gruvbox:
+
+colors:
+
+  primary:
+    background: '#282828'
+    foreground: '#EBDBB2'
+
+  normal:
+    black:   '#282828'
+    red:     '#CC241D'
+    green:   '#98971A'
+    yellow:  '#D79921'
+    blue:    '#458588'
+    magenta: '#B16286'
+    cyan:    '#689D6A'
+    white:   '#A89984'
+
+  bright:
+    black:   '#928374'
+    red:     '#FB4934'
+    green:   '#B8BB26'
+    yellow:  '#FABD2F'
+    blue:    '#83A598'
+    magenta: '#D3869B'
+    cyan:    '#8EC07C'
+    white:   '#EBDBB2'
+
+
+# ~~~~~~~~~~~~
+# ~~ Fuente ~~
+# ~~~~~~~~~~~~
+
+# fc-list nos devuelve las fuentes que tenemos disponibles.
+
+font:
+
+  normal:
+    family: JetBrains Mono
+    style: Regular
+
+  bold:
+    family: JetBrains Mono
+    style: Bold
+
+  italic:
+    family: JetBrains Mono
+    style: Italic
+
+  bold_italic:
+    family: JetBrains Mono
+    style: Bold Italic
+
+  size: 11
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~
+# ~~ Ajustes del mouse ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~
+
+mouse:
+  # This control the time alacritty should wait for accepting multiple clicks 
+  # as one double or triple click:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+  # If true, the cursor is temporarily hidden when typing:
+  hide_when_typing: true
+
+  url:
+    # Program to be executed when clicking on a text which is recognized 
+    # as a URL. The URL is always added to the command as the last parameter.
+    launcher:
+      program: xdg-open # None: url launching disabled completely.
+      args: []
+
+    # URL modifiers that need to be held down for opening URLs when 
+    # clicking on them:
+    modifiers: None
+
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~ Atajos del teclado ~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~
+
+    key_bindings:
+      - { key: V,        mods: Control|Shift, action: Paste            }
+      - { key: C,        mods: Control|Shift, action: Copy             }
+      - { key: Key0,     mods: Control,       action: ResetFontSize    }
+      - { key: Add,      mods: Control,       action: IncreaseFontSize }
+      - { key: Subtract, mods: Control,       action: DecreaseFontSize }

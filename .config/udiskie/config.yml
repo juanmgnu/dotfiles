@@ -1,0 +1,59 @@
+# ~~~~~~~~~~~~~
+# ~~ General ~~
+# ~~~~~~~~~~~~~
+
+program_options:
+
+  # [bool] Enable the tray icon: 
+  tray:             auto  # auto-hide icon when there are no handled devices.
+
+  # ["flat"|"nested"] Set the systray menu behaviour:
+  menu:             flat    
+
+  # [bool] Enable automatic mounting:
+  automount:        false   
+
+  # [bool] Enable notifications:
+  notify:           true    
+
+  # [string] Set program to open directories. It will be invoked with the 
+  # folder path as its last command line argument:
+  file_manager:     'xdg-open' 
+
+  # [string] Set terminal command line to open directories. It will be
+  # invoked with thefolder path as its last command line argument.
+  terminal:         'alacritty --working-directory'
+
+
+# ~~~~~~~~~~~~~~~~~~~
+# ~~ Notifications ~~
+# ~~~~~~~~~~~~~~~~~~~
+
+notifications:
+  # Customize which notifications are shown for how long:
+
+  timeout:          5         # Set the default for all notifications.
+
+  # Specify only if you want to overwrite the default:
+  #device_mounted:   5        # mount notification
+  #device_unmounted: true     # unmount notification
+  #device_added:     true     # device has appeared
+  #device_removed:   true     # device has disappeared
+  #device_unlocked:  -1       # encrypted device was unlocked
+  #device_locked:    -1       # encrypted device was locked
+  #job_failed:       -1       # mount/unlock/.. has failed
+
+notification_actions:
+  # Define which actions should be shown on notifications. 
+  # Specify an empty list if you don't want to see any
+  # notification for the specified event:
+
+  device_mounted:   [browse]
+  device_added:     [mount]
+
+
+# ~~~~~~~~~~
+# ~~ Menu ~~
+# ~~~~~~~~~~
+
+quickmenu_actions: [mount, unmount, unlock, terminal, detach, delete]

@@ -1,0 +1,117 @@
+# ~~~~~~~~~~~
+# ~~ BSPWM ~~
+# ~~~~~~~~~~~
+
+# El comando xev nos dice el nombre de la tecla que apretamos.
+
+# Salir de bspwm:
+super + control + shift + Escape
+    ~/.local/bin/exit.sh
+    
+# Reiniciar bspwm:
+super + shift + Escape
+    bspc wm -r
+
+# Cerrar ventana:
+super + shift + q
+    bspc node -c
+
+# Cambiar el foco a otra ventana:
+super + {h, j, k, l}
+    bspc node -f {west, south, north, east}
+
+# Mover ventana:
+super + shift + {h, j, k, l}
+    bspc node -s {west, south, north, east}
+
+# Cambiar el estado de una ventana:
+super + control + {t, shift + t, s, f}
+	  bspc node -t {tiled, pseudo_tiled, floating, fullscreen}
+
+# Cambiar foco a otro escritorio:
+super + {1-5}
+    bspc desktop -f '^{1-5}'
+
+# Mover ventana a otro escritorio:
+super + shift + {1-5}
+    bspc node -d '^{1-5}'
+
+# Incrementar el tamaño una la ventana:
+super + control + {h, j, k, l}
+	  bspc node -z {left -20 0, bottom 0 20, top 0 -20, right 20 0}
+
+# Disminuir el tamaño de una ventana:
+super + control + shift + {h, j, k, l}
+	  bspc node -z {right -20 0, top 0 20, bottom 0 -20, left 20 0}
+
+# Mover una ventana flotante:
+super + {Left, Down, Up, Right}
+	  bspc node -v {-20 0, 0 20, 0 -20, 20 0}
+
+# Alternar modo tiled / monocle en el escritorio actual:
+super + control + m
+  	bspc desktop -l next
+
+# Seleccionar siguiente / anterior nodo en el escritorio actual:
+super + control + {_, shift + }c
+	  bspc node -f {next, prev}.local
+
+# Setear bandera (flag) para el nodo:
+super + ctrl + {m, x, y, z}
+	  bspc node -g {marked, locked, sticky, private}
+
+
+# ~~~~~~~~~~~~~~~~~~
+# ~~ Aplicaciones ~~
+# ~~~~~~~~~~~~~~~~~~
+
+# Lanzador de aplicaciones:
+super + {space, alt + space}
+    rofi -show {drun, window}
+
+# Terminal:
+super + Return
+    alacritty
+
+# Gestor de archivos:
+super + f 
+    alacritty -e vifm
+
+# Neovim:
+super + v
+    alacritty -e nvim
+
+# Navegador web:
+super + w
+    firefox
+
+# Reproductor de música:
+super + {F5, F6, F7, F8, alt + F5, alt + F6, alt + F7, alt + F8}
+    ~/.local/bin/ctrlmusic.sh {"init", "play", "prev", "next", "quit", "stop", "seek--", "seek++"}
+
+# Controlar volumen:
+super + F10
+	  pactl set-sink-mute 0 toggle
+
+super + {F11, F12}
+    pactl set-sink-volume 0 {-2%, +2%}
+
+# Iniciar/Detener redshift/dunst:
+super + F9
+    [[ ! -z $(pidof redshift) ]] && killall redshift || redshift &
+
+super + alt + F9
+    [[ ! -z $(pidof dunst) ]] && killall dunst || dunst &
+
+# Capturas de pantalla:
+super + {Print, alt + Print, shift + Print}
+    ~/.local/bin/scrsht.sh {"screen", "window", "selection"}
+
+# Reiniciar sxhkd:
+super + alt + Escape
+	  pkill -USR1 -x sxhkd
+
+# Editar configs:
+super + alt + c
+    ~/.local/bin/editcfgs.sh
+

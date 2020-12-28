@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# ~~~~~~~~~~~~~~~
+# ~~ Autostart ~~
+# ~~~~~~~~~~~~~~~
+
+# Iniciamos polybar:
+~/.local/bin/initbar.sh
+
+# Seteamos el cursor:
+xsetroot -cursor_name left_ptr &
+
+
+# ~~~~~~~~~~~~~~~
+# ~~ Monitores ~~
+# ~~~~~~~~~~~~~~~
+
+# xrandr | grep connected nos dice el nombre de los monitores que tenemos conectados.
+# Si no instalamos el paquete xf86-video-ati, los monitores se llaman VGA-1 y HDMI-1.
+bspc monitor VGA-0                    -d 1 2 3 4
+bspc monitor HDMI-0                   -d 1 2 3 4
+
+bspc config remove_disabled_monitors  true
+bspc config remove_unplugged_monitors true
+
+
+# ~~~~~~~~~~~
+# ~~ BSPWM ~~
+# ~~~~~~~~~~~
+
+bspc config automatic_scheme      alternate
+
+bspc config border_width          2
+bspc config window_gap            5
+
+bspc config split_ratio           0.50
+
+bspc config borderless_monocle    true
+bspc config gapless_monocle       true
+
+bspc config top_padding           0
+bspc config bottom_padding        0
+bspc config right_padding         0 
+bspc config left_padding          0 
+
+bspc config click_to_focus        button1
+bspc config focus_follows_pointer false
+
+bspc config pointer_modifier      mod4
+bspc config pointer_action1       move
+bspc config pointer_action2       none
+bspc config pointer_action3       resize_side
+
+bspc config normal_border_color   "#282828"
+bspc config focused_border_color  "#666666"
+
+
+# ~~~~~~~~~~~~
+# ~~ Reglas ~~
+# ~~~~~~~~~~~~
+
+# xprop | grep WM_CLASS nos dice el nombre de la ventana que queremos modificar.
+
+bspc rule -a Pavucontrol          state=floating 
+bspc rule -a SimpleScreenRecorder state=floating 
+bspc rule -a Transmission-gtk     state=floating 
+bspc rule -a Caja                 state=floating 
+bspc rule -a BleachBit            state=floating 
+bspc rule -a Zathura              state=tiled 

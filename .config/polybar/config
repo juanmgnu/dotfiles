@@ -1,0 +1,235 @@
+; ~~~~~~~~~~~~~
+; ~~ General ~~
+; ~~~~~~~~~~~~~
+
+;[settings]
+;; The throttle settings lets the eventloop swallow up til X events
+;; if they happen within Y millisecond after first event was received.
+;; This is done to prevent flood of update event. For example if 5 modules emit 
+;; an update event at the same time, we really just care about the last one. 
+;; But if we wait too long for events to swallow the bar would appear sluggish 
+;; so we continue if timeout expires or limit is reached.
+;throttle-output = 5
+;throttle-output-for = 10
+;
+;; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events:
+;screenchange-reload = true
+
+[global/wm]
+; Adjust the _NET_WM_STRUT_PARTIAL top value. Used for top aligned bars:
+margin-top = 0
+
+; Adjust the _NET_WM_STRUT_PARTIAL bottom value. Used for bottom aligned bars:
+margin-bottom = 0
+
+
+; ~~~~~~~~~~~
+; ~~ Barra ~~
+; ~~~~~~~~~~~
+
+[bar/myBar]
+; If no monitor is given, the primary monitor is used if it exists:
+monitor = VGA-0
+
+; Tell the window Manager not to configure the window.
+; Use this to detach the bar if your WM is locking its size/position.
+; Note: With this most WMs will no longer reserve space for 
+; the bar and it will overlap other windows. You need to configure
+; your WM to add a gap where the bar will be placed.
+; SI ESTA EN FALSE, NO HACE FALTA QUE RESERVE ESPACIO ABAJO/ARRIBA EN LA CONFIG DE BSPWM
+; SI ESTA EN TRUE, DEBO RESERVAR ESPACIO ABAJO/ARRIBA PARA QUE SE VEA LA BARRA. SINO LAS VENTANAS LA CUBREN.
+override-redirect = false
+;
+; Put the bar at the bottom of the screen
+bottom = false
+
+; Dimension defined as pixel value (e.g. 35) or percentage (e.g. 50%):
+width = 1000
+height = 24
+
+; 
+offset-x = 340
+offset-y = 5
+
+; Value used for drawing rounded corners. This shouldn't be used together with 
+; border-size because the border doesn't get rounded. 
+; Individual top/bottom values can be defined using: radius-{top,bottom}:
+radius = 5.0
+
+; Prefer fixed center position for the `modules-center` block. 
+; The center block will stay in the middle of the bar whenever possible.
+; It can still be pushed around if other blocks need more space. When false, 
+; the center block is centered in the space between the left and right block:
+fixed-center = false
+
+; Background and foreground ARGB colors (e.g. #f00, #ff992a, #ddff1023):
+background = #282828
+foreground = #FFFFFF
+
+; Values applied to all borders. Individual side values can be defined using:
+; border-{left,top,right,bottom}-size and border-{left,top,right,bottom}-color.
+; The top and bottom borders are added to the bar height, so the effective
+; window height is: height + border-top-size + border-bottom-size
+; Meanwhile the effective window width is defined entirely by the width key and
+; the border is placed within this area. So you only have the following
+; horizontal space on the bar: width - border-right-size - border-left-size
+;border-size = 0
+;border-color = #282828
+
+; Number of spaces to add at the beginning/end of the bar:
+padding-left = 0
+padding-right = 0
+
+; Number of spaces to add before/after each module:
+module-margin-left = 1
+module-margin-right = 1
+
+; Font names are specified using pattern: font-N = <fontconfig pattern>;<vertical offset>
+font-0 = JetBrains Mono:style=regular:size=10;1
+;font-0 = Fira Code:style=regular:size=10;1
+;font-1 = Noto Color Emoji:scale=12
+
+; Modules are added to one of the available blocks:
+modules-left = bspwm
+modules-center = date
+modules-right = pulseaudio cpu
+
+; The separator will be inserted between the output of each module:
+separator = 
+
+; Position of the system tray window (if empty or undefined, tray support will be disabled):
+tray-position = right
+
+; Pad on the sides of each tray icon:
+tray-padding = 1
+
+; Requires polybar to be built with xcursor support (xcb-util-cursor):
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; Grosor de la línea que aparece abajo de los módulos (underline):
+line-size = 2
+
+; ~~~~~~~~~~~~~~~~~~
+; ~~ Módulo bspwm ~~
+; ~~~~~~~~~~~~~~~~~~
+
+[module/bspwm]
+type = internal/bspwm
+
+enable-click = true
+
+enable-scroll = false
+reverse-scroll = false
+
+label-focused = %index%
+label-focused-background = #282828
+label-focused-foreground = #FFFFFF
+label-focused-underline = #FB4934
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = #FFB399
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = #555555
+label-empty-padding = 2
+
+
+; ~~~~~~~~~~~~~~~~~~~~~~~
+; ~~ Módulo pulseaudio ~~
+; ~~~~~~~~~~~~~~~~~~~~~~~
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> 
+format-volume-background = #282828
+format-volume-foreground = #FFFFFF
+format-volume-underline = #B8BB26
+format-volume-padding = 1
+
+format-muted = <label-muted>
+format-muted-background = #282828
+format-muted-foreground = #888888
+format-muted-underline = #B8BB26
+format-muted-padding = 1
+
+label-volume = "vol %percentage%%"
+label-muted = audio muted
+
+
+; ~~~~~~~~~~~~~~~~
+; ~~ Módulo CPU ~~
+; ~~~~~~~~~~~~~~~~
+
+[module/cpu]
+type = internal/cpu
+
+interval = 2.0
+
+format = <label>
+format-background = #282828
+format-foreground = #FFFFFF
+format-underline = #83A598
+format-padding = 1
+
+label = "cpu %percentage%%"
+
+
+; ~~~~~~~~~~~~~~~~~~~~~
+; ~~ Módulo ethernet ~~
+; ~~~~~~~~~~~~~~~~~~~~~
+
+[module/eth]
+type = internal/network
+
+interface = enp1s0
+
+interval = 2.0
+
+format-connected = <label-connected>
+format-connected-background = #282828
+format-connected-foreground = #FFFFFF
+format-connected-underline = #9933FF
+format-connected-padding = 1
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = #282828
+format-disconnected-foreground = #888888
+format-disconnected-underline = #9933FF
+format-disconnected-padding = 1
+
+label-connected = "net %local_ip%"
+label-disconnected = "net disconnected"
+
+
+; ~~~~~~~~~~~~~~~~~~
+; ~~ Módulo fecha ~~
+; ~~~~~~~~~~~~~~~~~~
+
+[module/date]
+type = internal/date
+
+interval = 1.0
+
+format = <label>
+format-background = #282828
+format-foreground = #FFFFFF
+format-underline = #FFA64D
+format-padding = 1
+
+date = %Y-%m-%d
+time = %H:%M
+;
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+time-alt = %Y-%m-%d
+
+label = %time%
+
+; vim:ft=dosini
