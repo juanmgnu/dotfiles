@@ -15,8 +15,8 @@ Anyone is free to contribute ideas or suggest changes. :+1:
 
 ## Imágenes (pictures):
 
-### Tiled
-<img src="Pictures/screenshots/tiled.png" alt="Tiled" >
+### Tiling
+<img src="Pictures/screenshots/tiled.png" alt="Tiling" >
 
 ### Floating
 <img src="Pictures/screenshots/floating.png" alt="Floating" >
