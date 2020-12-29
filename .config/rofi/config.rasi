@@ -2,7 +2,7 @@ configuration {
   modi:         "run,drun,window";
   combi-modi:   "run,drun,window";
   theme:        "gruvbox-dark";
-  font:         "Fira Code 11";
+  font:         "JetBrains Mono 11";
   terminal:     "alacritty";
   matching:     "fuzzy";
   show-icons:   false;
