@@ -16,10 +16,10 @@ Anyone is free to contribute ideas or suggest changes. :+1:
 ## Imágenes (pictures):
 
 ### Tiling
-<img src="Pictures/screenshots/tiled.png" alt="Tiling" >
+<img src="screenshots/tiled.png" alt="Tiling" >
 
 ### Floating
-<img src="Pictures/screenshots/floating.png" alt="Floating" >
+<img src="screenshots/floating.png" alt="Floating" >
 
 ### Clean
-<img src="Pictures/screenshots/clean.png" alt="Clean" >
+<img src="screenshots/clean.png" alt="Clean" >
