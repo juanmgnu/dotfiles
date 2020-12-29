@@ -14,3 +14,12 @@ Anyone is free to contribute ideas or suggest changes. :+1:
 
 
 ## Imágenes (pictures):
+
+### Tiled
+<img src="Pictures/screenshots/tiled.png" alt="Tiled" >
+
+### Floating
+<img src="Pictures/screenshots/floating.png" alt="Floating" >
+
+### Clean
+<img src="Pictures/screenshots/clean.png" alt="Clean" >
