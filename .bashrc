@@ -25,7 +25,6 @@ alias psp="pacman -Ss"        # Search package.
 alias pdp="pacman -Qi"        # Show package info.
 alias pcp="pacman -Q | wc -l" # Number of packages installed.
 alias pcc="sudo pacman -Scc"  # Clean cache.
-alias pdo="sudo pacman -Rns $(pacman -Qtdq)" # Delete orphans packages.
 
 # Tools:
 alias grep="grep --color=auto"
