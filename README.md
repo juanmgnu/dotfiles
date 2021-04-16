@@ -10,9 +10,6 @@ Este es mi repositorio personal de dotfiles. Contiene las configuraciones actual
 ### Floating
 <img src="screenshots/floating.png" alt="Floating" >
 
-### Clean
-<img src="screenshots/clean.png" alt="Clean" >
-
 
 ## Información
 
@@ -25,11 +22,11 @@ Este es mi repositorio personal de dotfiles. Contiene las configuraciones actual
 - **Theme:** gruvbox
 
 ### Algunos programas
-- Terminal: alacritty
-- Editor de texto: neovim
-- Visor PDF: zathura
-- File Manager: vifm
-- Reproductor de música: cmus
-- Reproductor de video: mpv
-- Lanzador aplicaciones: rofi
+- **Terminal:** alacritty
+- **Editor de texto:** neovim
+- **Visor PDF:** zathura
+- **File Manager:** vifm
+- **Reproductor de música:** cmus
+- **Reproductor de video:** mpv
+- **Lanzador aplicaciones:** rofi
 
