@@ -39,4 +39,3 @@ esac
 # Use [[]] if you want conditional expressions not supported by [] and don't need to be portable.
 
 # == is a bash-ism. It's better to use the POSIX =. 
-# In bash the two are equivalent, and in plain sh = is the only one guaranteed to work.
